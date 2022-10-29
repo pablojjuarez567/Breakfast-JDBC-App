@@ -208,7 +208,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
         panelButtonOptions.add(btnCheckRequestDelivered, new java.awt.GridBagConstraints());
 
-        btnShowDialogRequestPerClient.setText("Ver num. Peridos por Cliente");
+        btnShowDialogRequestPerClient.setText("Ver num. Pedidos por Cliente");
         btnShowDialogRequestPerClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowDialogRequestPerClientActionPerformed(evt);
@@ -280,15 +280,13 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteRequestActionPerformed
 
     private void btnShowDialogMothIncomingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowDialogMothIncomingsActionPerformed
-        Float incomings = 0.0f;
-        //TODO Calculate incomings las month
+        Float incomings = RequestMySQL.lastMonthBenefit();
 
         JOptionPane.showMessageDialog(this,
-                "Este último mes las ganacias han sido de " + incomings,
+                "Este último mes las ganancias han sido de " + incomings + "€",
                 "Ganancias último mes",
                 JOptionPane.PLAIN_MESSAGE);
     }//GEN-LAST:event_btnShowDialogMothIncomingsActionPerformed
-
 
     private void showCreateRequestDialog() {
         var createRequestDialog = new CreateRequestDialog(this, true);

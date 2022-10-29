@@ -250,11 +250,6 @@ public class CreateRequestDialog extends javax.swing.JDialog {
         }
     }
 
-    public void printTable2(ArrayList<Product> allProduct) {
-
-
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JTextField editTextClientName;

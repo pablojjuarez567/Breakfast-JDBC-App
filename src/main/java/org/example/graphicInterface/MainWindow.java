@@ -45,7 +45,7 @@ public class MainWindow extends javax.swing.JFrame {
         panelButtonOptions = new javax.swing.JPanel();
         btnCreateRequest = new javax.swing.JButton();
         btnDeleteRequest = new javax.swing.JButton();
-        btnShowDialogMothIncomings = new javax.swing.JButton();
+        btnShowDialogMothIncomes = new javax.swing.JButton();
         btnCheckRequestDelivered = new javax.swing.JButton();
         btnShowDialogRequestPerClient = new javax.swing.JButton();
 
@@ -186,17 +186,17 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         panelButtonOptions.add(btnDeleteRequest, gridBagConstraints);
 
-        btnShowDialogMothIncomings.setText("Ganancias del Mes");
-        btnShowDialogMothIncomings.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        btnShowDialogMothIncomings.addActionListener(new java.awt.event.ActionListener() {
+        btnShowDialogMothIncomes.setText("Ganancias del Mes");
+        btnShowDialogMothIncomes.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnShowDialogMothIncomes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnShowDialogMothIncomingsActionPerformed(evt);
+                btnShowDialogMothIncomesActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        panelButtonOptions.add(btnShowDialogMothIncomings, gridBagConstraints);
+        panelButtonOptions.add(btnShowDialogMothIncomes, gridBagConstraints);
 
         btnCheckRequestDelivered.setBackground(new java.awt.Color(255, 204, 0));
         btnCheckRequestDelivered.setText("Marcar Entregado");
@@ -279,14 +279,14 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDeleteRequestActionPerformed
 
-    private void btnShowDialogMothIncomingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowDialogMothIncomingsActionPerformed
-        Float incomings = RequestMySQL.lastMonthBenefit();
+    private void btnShowDialogMothIncomesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowDialogMothIncomesActionPerformed
+        Float incomes = RequestMySQL.lastMonthBenefit();
 
         JOptionPane.showMessageDialog(this,
-                "Este último mes las ganancias han sido de " + incomings + "€",
+                "Este último mes las ganancias han sido de " + incomes + "€",
                 "Ganancias último mes",
                 JOptionPane.PLAIN_MESSAGE);
-    }//GEN-LAST:event_btnShowDialogMothIncomingsActionPerformed
+    }//GEN-LAST:event_btnShowDialogMothIncomesActionPerformed
 
     private void showCreateRequestDialog() {
         var createRequestDialog = new CreateRequestDialog(this, true);
@@ -354,7 +354,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnCheckRequestDelivered;
     private javax.swing.JButton btnCreateRequest;
     private javax.swing.JButton btnDeleteRequest;
-    private javax.swing.JButton btnShowDialogMothIncomings;
+    private javax.swing.JButton btnShowDialogMothIncomes;
     private javax.swing.JButton btnShowDialogRequestPerClient;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

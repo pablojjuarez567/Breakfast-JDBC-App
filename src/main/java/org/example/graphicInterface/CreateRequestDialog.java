@@ -155,13 +155,35 @@ public class CreateRequestDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-
         int row = productTable.getSelectedRow();
-        Integer id = Integer.valueOf(productTable.getModel().getValueAt(row, 0).toString());
-        var p = ProductMySQL.get(id);
-        var r = new Request(0, "", editTextClientName.getText(), false, p);
-        RequestMySQL.add(r);
-        doClose(RET_OK);
+        if(row == -1){
+            JOptionPane.showMessageDialog(
+                    this,
+                    "No se ha seleccionado ningún producto",
+                    "Imposible crear este Pedido",
+                    JOptionPane.NO_OPTION);
+        }else{
+            Integer id = Integer.valueOf(productTable.getModel().getValueAt(row, 0).toString());
+            var p = ProductMySQL.get(id);
+
+            if(!p.getAvailibity()){
+                JOptionPane.showMessageDialog(
+                        this,
+                        "El producto seleccionado no está disponible",
+                        "Imposible crear este Pedido",
+                        JOptionPane.NO_OPTION);
+            }else if(editTextClientName.getText().equals("")){
+                JOptionPane.showMessageDialog(
+                        this,
+                        "No se ha declarado el cliente",
+                        "Imposible crear este Pedido",
+                        JOptionPane.NO_OPTION);
+            }else{
+                var r = new Request(0, "", editTextClientName.getText(), false, p);
+                RequestMySQL.add(r);
+                doClose(RET_OK);
+            }
+        }
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed

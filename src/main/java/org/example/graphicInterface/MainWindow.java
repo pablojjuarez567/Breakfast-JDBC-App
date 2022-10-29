@@ -240,11 +240,19 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void btnCheckRequestDeliveredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckRequestDeliveredActionPerformed
         int row = jTable1.getSelectedRow();
-        Integer id = Integer.valueOf(jTable1.getModel().getValueAt(row, 0).toString());
-        var r = RequestMySQL.get(id);
-        r.setDelivered(true);
-        RequestMySQL.update(r);
-        printTable(RequestMySQL.getAll());
+        if (row == -1) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "No se ha seleccionado ningún pedido",
+                    "Imposible actualizar este Pedido a entregado",
+                    JOptionPane.NO_OPTION);
+        } else {
+            Integer id = Integer.valueOf(jTable1.getModel().getValueAt(row, 0).toString());
+            var r = RequestMySQL.get(id);
+            r.setDelivered(true);
+            RequestMySQL.update(r);
+            printTable(RequestMySQL.getAll());
+        }
     }//GEN-LAST:event_btnCheckRequestDeliveredActionPerformed
 
     private void btnShowDialogRequestPerClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowDialogRequestPerClientActionPerformed
@@ -264,18 +272,27 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChangeTableSeeTodayProductsNonDeliveredActionPerformed
 
     private void btnDeleteRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRequestActionPerformed
-        int n = JOptionPane.showConfirmDialog(
-                this,
-                "¿Estas seguro de querer eliminar el pedido seleccionado?",
-                "Eliminar un Pedido",
-                JOptionPane.YES_NO_OPTION);
+        int row = jTable1.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(
+                    this,
+                    "No se ha seleccionado ningún pedido",
+                    "Imposible eliminar este Pedido",
+                    JOptionPane.NO_OPTION);
+        } else {
+            int n = JOptionPane.showConfirmDialog(
+                    this,
+                    "¿Estas seguro de querer eliminar el pedido seleccionado?",
+                    "Eliminar un Pedido",
+                    JOptionPane.YES_NO_OPTION);
 
-        System.out.print("Devuelve: " + n);
-        if (n == 0) {
-            int row = jTable1.getSelectedRow();
-            Integer id = Integer.valueOf(jTable1.getModel().getValueAt(row, 0).toString());
-            RequestMySQL.delete(id);
-            printTable(RequestMySQL.getAll());
+            System.out.print("Devuelve: " + n);
+            if (n == 0) {
+
+                Integer id = Integer.valueOf(jTable1.getModel().getValueAt(row, 0).toString());
+                RequestMySQL.delete(id);
+                printTable(RequestMySQL.getAll());
+            }
         }
     }//GEN-LAST:event_btnDeleteRequestActionPerformed
 

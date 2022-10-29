@@ -236,22 +236,17 @@ public class RequestMySQL {
     }
 
     public static Float lastMonthBenefit() {
+        Float benefit = 0f;
 
-        try (var pst = connection.prepareStatement(LAST_MONTH_QUERY)) {
+        try(var pst = connection.prepareStatement(LAST_MONTH_QUERY)){
 
             ResultSet result = pst.executeQuery();
             System.out.println(result);
-            if (result.next()) return result.getFloat("sum(p.price)");
-            else return null;
+            if(result.next())          benefit = result.getFloat("sum(p.price)");
 
         } catch (SQLException ex) {
             Logger.getLogger(RequestMySQL.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
-        Float benefit = 0f;
-
-
         return benefit;
     }
 

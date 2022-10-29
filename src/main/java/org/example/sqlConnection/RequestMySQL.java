@@ -9,10 +9,7 @@ import java.sql.SQLException;
 
 import static java.sql.Statement.RETURN_GENERATED_KEYS;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +28,8 @@ public class RequestMySQL {
     private static final String GET_QUERY = "SELECT * FROM request WHERE id = ?";
     private static final String GET_A_CLIENT = "SELECT * FROM request WHERE client = ?";
     private static final String GET_BY_CLIENT = "SELECT * FROM request ORDER BY client";
+
+    private static final String GET_FROM_LAST_WEEK = "SELECT * FROM request WHERE date >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
 
 
     private static final String INSERT_QUERY = """
@@ -260,28 +259,25 @@ public class RequestMySQL {
         String date = sqlDate.toString();
 
         for (Integer i = 0; i < all.size(); i++) {
-            if (all.get(i).getDate().equals(date) && all.get(i).getDelivered()) {
+            if (all.get(i).getDate().equals(date) && !all.get(i).getDelivered()) {
                 pending.add(all.get(i));
             }
         }
         return pending;
     }
 
-    public static ArrayList<Request> lastWeek(ArrayList<Request> all) {
+    public static ArrayList<Request> getFromLastWeek() {
+        var lastWeekRequest = new ArrayList<Request>();
 
-        var pending = new ArrayList<Request>();
+        try (var pst = connection.prepareStatement(GET_FROM_LAST_WEEK)) {
 
-        java.util.Date now = new java.util.Date();
-        java.sql.Date sqlDate = new java.sql.Date(now.getTime());
-        String date = sqlDate.toString();
+            ResultSet result = pst.executeQuery();
+            while (result.next()) lastWeekRequest.add(buildRequest(result));
 
-        for (Integer i = 0; i < all.size(); i++) {
-            if (all.get(i).getDate().equals(date) && all.get(i).getDelivered()) {
-                pending.add(all.get(i));
-            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RequestMySQL.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        return pending;
+        return lastWeekRequest;
     }
 
     public static Request buildRequest(ResultSet result) {

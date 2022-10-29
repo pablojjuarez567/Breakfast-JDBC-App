@@ -62,7 +62,7 @@ public class MainWindow extends javax.swing.JFrame {
         btnChangeTableSeeAllProducts.setToolTipText("");
         btnChangeTableSeeAllProducts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangeTableSeeAllProductsActionPerformed(evt);
+                btnChangeTableSeeAllRequestActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -84,7 +84,7 @@ public class MainWindow extends javax.swing.JFrame {
         btnChangeTableSeeLastWeekProduct.setText("Ult. Semana");
         btnChangeTableSeeLastWeekProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangeTableSeeLastWeekProductActionPerformed(evt);
+                btnChangeTableSeeLastWeekRequestActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -95,7 +95,7 @@ public class MainWindow extends javax.swing.JFrame {
         btnChangeTableSeeTodayProductsNonDelivered.setText("No Entregados Hoy");
         btnChangeTableSeeTodayProductsNonDelivered.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangeTableSeeTodayProductsNonDeliveredActionPerformed(evt);
+                btnChangeTableSeeTodayRequestNonDeliveredActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -259,16 +259,16 @@ public class MainWindow extends javax.swing.JFrame {
         showNumOfRequestPerClientDialog();
     }//GEN-LAST:event_btnShowDialogRequestPerClientActionPerformed
 
-    private void btnChangeTableSeeAllProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeTableSeeAllProductsActionPerformed
+    private void btnChangeTableSeeAllRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeTableSeeAllProductsActionPerformed
         printTable(RequestMySQL.getAll());
     }//GEN-LAST:event_btnChangeTableSeeAllProductsActionPerformed
 
-    private void btnChangeTableSeeLastWeekProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeTableSeeLastWeekProductActionPerformed
-        // TODO add your handling code here:
+    private void btnChangeTableSeeLastWeekRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeTableSeeLastWeekProductActionPerformed
+        printTable(RequestMySQL.getFromLastWeek());
     }//GEN-LAST:event_btnChangeTableSeeLastWeekProductActionPerformed
 
-    private void btnChangeTableSeeTodayProductsNonDeliveredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeTableSeeTodayProductsNonDeliveredActionPerformed
-        // TODO add your handling code here:
+    private void btnChangeTableSeeTodayRequestNonDeliveredActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeTableSeeTodayProductsNonDeliveredActionPerformed
+        printTable(RequestMySQL.todayPendingRequest(RequestMySQL.getAll()));
     }//GEN-LAST:event_btnChangeTableSeeTodayProductsNonDeliveredActionPerformed
 
     private void btnDeleteRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRequestActionPerformed

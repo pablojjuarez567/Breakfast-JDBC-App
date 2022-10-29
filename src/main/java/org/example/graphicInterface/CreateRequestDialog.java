@@ -9,15 +9,10 @@ import org.example.sqlConnection.RequestMySQL;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import javax.swing.AbstractAction;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
-import javax.swing.JComponent;
-import javax.swing.KeyStroke;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
  * @author pablo
  */
 public class CreateRequestDialog extends javax.swing.JDialog {
@@ -115,35 +110,8 @@ public class CreateRequestDialog extends javax.swing.JDialog {
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jLabel1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(editTextClientName, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cancelButton)
-                                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel1)
-                                        .addComponent(editTextClientName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(cancelButton)
-                                        .addComponent(okButton))
-                                .addContainerGap())
-        );
+        jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup().addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(jPanel1Layout.createSequentialGroup().addGap(18, 18, 18).addComponent(jLabel1).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(editTextClientName, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)).addGroup(jPanel1Layout.createSequentialGroup().addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(cancelButton).addContainerGap()));
+        jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup().addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jLabel1).addComponent(editTextClientName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED).addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(cancelButton).addComponent(okButton)).addContainerGap()));
 
         getRootPane().setDefaultButton(okButton);
 
@@ -154,33 +122,29 @@ public class CreateRequestDialog extends javax.swing.JDialog {
         jPanel2.setLayout(new java.awt.BorderLayout());
 
         productTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
+                new Object[][]{
                         {null, null, null, null, null},
                         {null, null, null, null, null},
                         {null, null, null, null, null},
-                        {null, null, null, null, null}
-                },
-                new String [] {
+                        {null, null, null, null, null}},
+                new String[]{
                         "Id", "Nombre", "Tipo", "Precio", "Disponibilidad"
                 }
         ) {
-            Class[] types = new Class [] {
-                    java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                    false, false, false, false, false
-            };
+            Class[] types = new Class[]{java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class, java.lang.Boolean.class};
+            boolean[] canEdit = new boolean[]{false, false, false, false, false};
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         productTable.setMinimumSize(new java.awt.Dimension(30, 80));
-        productTable.setPreferredSize(new java.awt.Dimension(375, 30));
+        //productTable.setPreferredSize(new java.awt.Dimension(375, 30));
+
         jScrollPane1.setViewportView(productTable);
 
         jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -211,13 +175,13 @@ public class CreateRequestDialog extends javax.swing.JDialog {
     private void initMoreComponents() {
         productTable.setColumnSelectionAllowed(true);
         productTable.setMinimumSize(new java.awt.Dimension(30, 80));
-        productTable.setPreferredSize(new java.awt.Dimension(375, 30));
         productTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(productTable);
         productTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         printTable(ProductMySQL.getAll());
 
     }
+
     /**
      * Closes the dialog
      */
@@ -273,17 +237,23 @@ public class CreateRequestDialog extends javax.swing.JDialog {
         });
     }
 
-    public void printTable(ArrayList<Product> allProduct){
+    public void printTable(ArrayList<Product> allProduct) {
 
         DefaultTableModel model = (DefaultTableModel) productTable.getModel();
         model.setRowCount(0);
 
-        for(Integer i = 0; i < allProduct.size() ; i++){
+        for (Integer i = 0; i < allProduct.size(); i++) {
             var p = allProduct.get(i);
 
             Object[] row = {p.getId(), p.getName(), p.getType(), p.getPrice(), p.getAvailibity()};
             model.addRow(row);
+            System.out.println("LOG Print table" + p.getName());
         }
+    }
+
+    public void printTable2(ArrayList<Product> allProduct) {
+
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

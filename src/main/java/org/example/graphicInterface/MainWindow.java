@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
  * @author admin
  */
 
@@ -55,8 +54,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         panelButtonsUpdateTable.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20));
         java.awt.GridBagLayout panelButtonsUpdateTableLayout = new java.awt.GridBagLayout();
-        panelButtonsUpdateTableLayout.columnWeights = new double[] {1.0, 1.0, 1.0, 1.0};
-        panelButtonsUpdateTableLayout.rowWeights = new double[] {1.0, 1.0};
+        panelButtonsUpdateTableLayout.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0};
+        panelButtonsUpdateTableLayout.rowWeights = new double[]{1.0, 1.0};
         panelButtonsUpdateTable.setLayout(panelButtonsUpdateTableLayout);
 
         btnChangeTableSeeAllProducts.setText("Todos");
@@ -122,30 +121,30 @@ public class MainWindow extends javax.swing.JFrame {
         panelMainTable.setLayout(new java.awt.BorderLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
+                new Object[][]{
                         {null, null, null, null, null},
                         {null, null, null, null, null},
                         {null, null, null, null, null},
                         {null, null, null, null, null},
                         {null, null, null, null, null}
                 },
-                new String [] {
+                new String[]{
                         "Id", "Fecha", "Cliente", "Entregado", "Producto"
                 }
         ) {
-            Class[] types = new Class [] {
+            Class[] types = new Class[]{
                     java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
+            boolean[] canEdit = new boolean[]{
                     false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         jTable1.setColumnSelectionAllowed(true);
@@ -160,8 +159,8 @@ public class MainWindow extends javax.swing.JFrame {
 
         panelButtonOptions.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 20, 10, 20));
         java.awt.GridBagLayout panelButtonOptionsLayout = new java.awt.GridBagLayout();
-        panelButtonOptionsLayout.columnWeights = new double[] {1.0, 1.0, 1.0};
-        panelButtonOptionsLayout.rowWeights = new double[] {1.0, 1.0};
+        panelButtonOptionsLayout.columnWeights = new double[]{1.0, 1.0, 1.0};
+        panelButtonOptionsLayout.rowWeights = new double[]{1.0, 1.0};
         panelButtonOptions.setLayout(panelButtonOptionsLayout);
 
         btnCreateRequest.setBackground(new java.awt.Color(0, 0, 255));
@@ -336,12 +335,12 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
 
-    public void printTable(ArrayList<Request> allRequest){
+    public void printTable(ArrayList<Request> allRequest) {
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         model.setRowCount(0);
 
-        for(Integer i = 0; i < allRequest.size() ; i++){
+        for (Integer i = 0; i < allRequest.size(); i++) {
             var p = allRequest.get(i);
 
             Object[] row = {p.getId(), p.getDate(), p.getClient(), p.getDelivered(), p.getProduct().getName()};

@@ -1,6 +1,7 @@
 package org.example.graphicInterface;
 
 
+import org.example.sqlConnection.ProductMySQL;
 import org.example.sqlConnection.RequestMySQL;
 
 import java.awt.event.ActionEvent;
@@ -123,7 +124,7 @@ public class NumOfRequestPerClientDialog extends javax.swing.JDialog {
 
                 }
         ));
-        numProductsPerClientTable.setPreferredSize(new java.awt.Dimension(375, 30));
+        //numProductsPerClientTable.setPreferredSize(new java.awt.Dimension(375, 30));
         jScrollPane1.setViewportView(numProductsPerClientTable);
 
         jPanel2.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -132,6 +133,16 @@ public class NumOfRequestPerClientDialog extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private void initMoreComponents() {
+        numProductsPerClientTable.setColumnSelectionAllowed(true);
+        numProductsPerClientTable.setMinimumSize(new java.awt.Dimension(30, 80));
+        numProductsPerClientTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(numProductsPerClientTable);
+        numProductsPerClientTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+
+        printTable(RequestMySQL.numberRequestByClient());
+
+    }
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         doClose(RET_OK);
@@ -205,10 +216,11 @@ public class NumOfRequestPerClientDialog extends javax.swing.JDialog {
         DefaultTableModel model = (DefaultTableModel) numProductsPerClientTable.getModel();
         model.setRowCount(0);
 
-        var clients = RequestMySQL.getAllClients(RequestMySQL.getAll());
+        //var clients = RequestMySQL.getAllClients(RequestMySQL.getAll());
+
 
         for (String name: allClients.keySet()) {
-            String key = name.toString();
+            String key = name;
             Integer value = allClients.get(name);
 
             Object[] row = {key, value};
@@ -228,13 +240,5 @@ public class NumOfRequestPerClientDialog extends javax.swing.JDialog {
 
     private int returnStatus = RET_CANCEL;
 
-    private void initMoreComponents() {
-        numProductsPerClientTable.setColumnSelectionAllowed(true);
-        numProductsPerClientTable.setMinimumSize(new java.awt.Dimension(30, 80));
-        numProductsPerClientTable.setPreferredSize(new java.awt.Dimension(375, 30));
-        numProductsPerClientTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(numProductsPerClientTable);
-        numProductsPerClientTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        printTable(RequestMySQL.numberRequestByClient());
-    }
+
 }

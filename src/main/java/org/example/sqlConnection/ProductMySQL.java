@@ -13,8 +13,10 @@ import java.util.logging.Logger;
 
 
 public class ProductMySQL {
-    private static final String USER = "root";
-    private static final String PASSWORD = "";
+    //private static final String USER = "root";
+    private static final String USER = "newuser";
+    //private static final String PASSWORD = "";
+    private static final String PASSWORD = "newuser";
     private static final String URL = "jdbc:mysql://localhost:3306/breakfast";
     private static Connection connection;
 

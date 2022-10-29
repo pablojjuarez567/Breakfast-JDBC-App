@@ -121,7 +121,7 @@ public class NumOfRequestPerClientDialog extends javax.swing.JDialog {
 
                 },
                 new String [] {
-
+                        "Cliente", "Num. Pedidios"
                 }
         ));
         //numProductsPerClientTable.setPreferredSize(new java.awt.Dimension(375, 30));

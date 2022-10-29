@@ -220,13 +220,6 @@ public class RequestMySQL {
             }
         }
 
-//TODO Miguel : Borrar LOG
-//        for (String name: counter.keySet()) {
-//            String key = name.toString();
-//            Integer value = counter.get(name);
-//            System.out.println(key + " " + value);
-//        }
-
         return counter;
     }
 

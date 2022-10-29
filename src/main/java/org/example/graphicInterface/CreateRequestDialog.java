@@ -247,7 +247,6 @@ public class CreateRequestDialog extends javax.swing.JDialog {
 
             Object[] row = {p.getId(), p.getName(), p.getType(), p.getPrice(), p.getAvailibity()};
             model.addRow(row);
-            System.out.println("LOG Print table" + p.getName());
         }
     }
 
